@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
     static String sortStr(String s) {
-
+        // make an character array
         char[] arr = s.toCharArray();
         // sort the array
         Arrays.sort(arr);
