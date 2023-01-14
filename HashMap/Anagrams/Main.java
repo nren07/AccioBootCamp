@@ -5,7 +5,7 @@ public class Main {
     static String sortStr(String s) {
         // an character array
         char[] arr = s.toCharArray();
-        // sort the array
+        // sort the array acc
         Arrays.sort(arr);
         return new String(arr);
     }
