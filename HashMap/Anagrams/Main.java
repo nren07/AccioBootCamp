@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     static String sortStr(String s) {
-        // an character array
+        
         char[] arr = s.toCharArray();
         
         Arrays.sort(arr);
