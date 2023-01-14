@@ -1,5 +1,5 @@
 
-// A Java program to print all anagrams together
+
 import java.util.*;
 
 public class Main {
@@ -8,11 +8,10 @@ public class Main {
         char[] arr = s.toCharArray();
         // sort the array
         Arrays.sort(arr);
-        // convert arr to string
         return new String(arr);
     }
-    static void printAnagramsTogether(String strs[],
-            int n) {
+
+    static void printAnagramsTogether(String strs[], int n) {
         Map<String, List<String>> hm = new TreeMap<>();
 
         for (int i = 0; i < n; i++) {
