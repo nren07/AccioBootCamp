@@ -3,9 +3,9 @@ import java.util.*;
 
 public class Main {
     static String sortStr(String s) {
-        //  an character array
+        // an character array
         char[] arr = s.toCharArray();
-        // sort the array as
+        // sort the array
         Arrays.sort(arr);
         return new String(arr);
     }
