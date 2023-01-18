@@ -5,10 +5,20 @@ import java.io.*;
 class Main {
 
     public static boolean strongNumbers(long n) {
-        Map<Integer, Integer> hm = new HashMap<>();
-        for(long i=1;i<=n;i++){
-            if(hm.containsKey(n%i))
+
+        long num = n;
+        for (long i = 2; i < num; i++) {
+            while (num % i == 0) {
+                if (n % (i * i) != 0) {
+                    return false;
+                }
+                num = num / i;
+            }
         }
+        if (num > 2 && n % (num * num) != 0) {
+            return false;
+        }
+        return true;
 
     }
 

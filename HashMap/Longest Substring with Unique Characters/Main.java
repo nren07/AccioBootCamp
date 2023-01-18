@@ -2,25 +2,26 @@ import java.util.*;
 
 class Solution {
     public int longestSubstring(String s) {
-        int maxLen = 0;
-        int st = 0;
-        int end = 0;
-        int n = s.length();
+
         Map<Character, Integer> hm = new HashMap<>();
-        while (end < n) {
-            if (!hm.containsKey(s.charAt(end))) {
-                hm.put(s.charAt(end), 1);
-                maxLen = Math.max(maxLen, end - start);
-                end++;
-            } else {
-                hm.put(s.charAt(i), 2);
-                while (start < end && hm.get(s.charAt(end)) > 1) {
-                    hm.remove(s.charAt(start));
-                    start++;
-                }
-            }
+        int ans = 0;
+        for (int i = 0, j = 0; i < s.length(); i++) {
+
+            // Update j based on previous
+            // occurrence of a[i]
+            j = Math.max(hm.containsKey(s.charAt(i)) ? hm.get(s.charAt(i)) : 0, j);
+
+            // Update ans to store maximum
+            // length of subarray
+            ans = Math.max(ans, i - j + 1);
+
+            // Store the index of current
+            // occurrence of a[i]
+            hm.put(s.charAt(i), i + 1);
         }
-        return maxLen;
+
+        // Return final ans
+        return ans;
     }
 }
 
