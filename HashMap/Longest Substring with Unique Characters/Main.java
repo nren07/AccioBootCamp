@@ -3,24 +3,25 @@ import java.util.*;
 class Solution {
     public int longestSubstring(String s) {
 
-        Map<Character, Integer> hm = new HashMap<>();
-        int ans = 0;
-        for (int i = 0, j = 0; i < s.length(); i++) {
+        int freq[] = new int[256];
+        int st = 0, end = 0, repeat = 0, ans = 0;
 
-            // Update j based on previous
-            // occurrence of a[i]
-            j = Math.max(hm.containsKey(s.charAt(i)) ? hm.get(s.charAt(i)) : 0, j);
+        while (end < s.length()) {
 
-            // Update ans to store maximum
-            // length of subarray
-            ans = Math.max(ans, i - j + 1);
+            freq[s.charAt(end)]++;
+            if (freq[s.charAt(end)] > 1)
+                repeat++;
+            end++;
 
-            // Store the index of current
-            // occurrence of a[i]
-            hm.put(s.charAt(i), i + 1);
+            while (st < end && repeat > 0) {
+                if (freq[s.charAt(st)] > 1)
+                    repeat--;
+                freq[s.charAt(st)]--;
+                st++;
+            }
+            ans = Math.max(ans, end - st);
+
         }
-
-        // Return final ans
         return ans;
     }
 }
