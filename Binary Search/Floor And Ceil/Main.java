@@ -3,6 +3,12 @@ import java.util.*;
 public class Main {
     public static int[] floorAndCeil(int key, int[] arr) {
         int start = 0, end = arr.length - 1;
+
+        if (arr[end] < key)
+            return new int[] { arr[end], -1 };
+        else if (arr[start] < key)
+            return new int[] { -1, arr[start] };
+
         while (start <= end) {
             int mid = (start + end) / 2;
             if (arr[mid] == key)
@@ -12,14 +18,8 @@ public class Main {
             else
                 end = mid - 1;
         }
-        if (end < 0 && start >= arr.length)
-            return new int[] { -1, -1 };
-        else if (end < 0)
-            return new int[] { -1, arr[start] };
-        else if (start >= arr.length)
-            return new int[] { arr[end], -1 };
-        else
-            return new int[] { arr[end], arr[start] };
+
+        return new int[] { arr[end], arr[start] };
     }
 
     public static void main(String[] args) {
