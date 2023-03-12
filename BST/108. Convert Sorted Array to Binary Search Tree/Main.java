@@ -1,6 +1,7 @@
 class Solution {
     public TreeNode solve(int []arr, int l, int r){
         if(l>r) return null;
+        // 
         int mid=(l+r)/2;
         int val=arr[mid];
         TreeNode me=new TreeNode(val);
