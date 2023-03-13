@@ -67,3 +67,75 @@ Constraints
 1 <= q <= 10000
 */
 
+import java.util.*;
+
+class Pair {
+    int row1;
+    int row2;
+    int col1;
+    int col2;
+}
+
+class Solution {
+
+    public List<Integer> solve(int matrix[][], Pair query[]) {
+        int n=matrix.length;
+		int l=query.length;
+		ArrayList<Integer>ans=new ArrayList<>();
+		for(int i=0;i<n;i++){
+			for(int j=1;j<matrix[0].length;j++){
+				matrix[i][j]+=matrix[i][j-1];	
+			}			
+		}
+		
+		for(int i=1;i<n;i++){
+			for(int j=0;j<matrix[0].length;j++){
+				matrix[i][j]+=matrix[i-1][j];
+			}
+		}
+        for(int i=0;i<query.length;i++){
+			Pair temp=query[i];
+			int r1=temp.row1;
+			int r2=temp.row2;
+			int c1=temp.col1;
+			int c2=temp.col2;
+			int sum=matrix[r2][c2];
+			int extraSum= ((r1!=0 )? matrix[r1-1][c2] : 0) + ((c1!=0) ? matrix[r2][c1-1] : 0) ;
+			extraSum-=((r1!=0) && (c1!=0) ? matrix[r1-1][c1-1] : 0);
+			int actualSum=sum-extraSum;
+			ans.add(actualSum);
+		}
+		return ans;
+    }
+}
+
+class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int matrix[][] = new int[n][m];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            matrix[i][j]=sc.nextInt();
+        }
+        int q = sc.nextInt();
+        Pair query[] = new Pair[q];
+
+        Solution obj = new Solution();
+        for (int i = 0; i < q; i++) {
+            Pair p=new Pair();
+            p.row1 = sc.nextInt();
+            p.col1 = sc.nextInt();
+            p.row2 = sc.nextInt();
+            p.col2 = sc.nextInt();
+            query[i]=p;
+        }
+        List<Integer> ans = obj.solve(matrix, query);
+        for(int x: ans)
+        System.out.println(x);
+        sc.close();
+    }
+}
