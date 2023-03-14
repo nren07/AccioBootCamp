@@ -15,8 +15,8 @@ class Main {
 }
 class Solution{
     public long maxSubarraySum(int a[],int n){
-        long currSum=Long.MIN_VALUE;
-		long maxSum=0;
+        long currSum=Integer.MIN_VALUE;
+		long maxSum=Integer.MIN_VALUE;
 		for(int i=0;i<n;i++){
 			currSum=Math.max(currSum+a[i],a[i]);
 			maxSum=Math.max(maxSum,currSum);
