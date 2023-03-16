@@ -1,8 +1,11 @@
 /*
+You are given an array A of N integers. You are also given another array ops describing operations where ops[i] = (l, r). l and r are 0-indexed. For every pair in ops calculate the sum of A[l] + A[l+1] +...+ A[r-1] + A[r].
 
+Your score is the sum of all the answers from ops. You have to find the maximum score possible, if you can arrange the array A in any order.
 
+The answer can be very large, so return it modulo 1000000007.
 
-
+Note Complete the given function. The input and output would be handled by the driver code
 
 */
 
