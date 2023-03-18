@@ -9,6 +9,9 @@ class Solution {
         me.right=solve(arr,mid+1,r);
         return me;
     }
+
+    // all done
+    
     public TreeNode sortedArrayToBST(int[] nums) {
         return solve(nums,0,nums.length-1);
     }
