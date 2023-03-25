@@ -2,39 +2,39 @@ import java.io.*;
 import java.util.*;
 
 class Solution {
-	// public static boolean dfs(ArrayList<ArrayList<Integer>>graph, int node,int parent, boolean[]vis){
-	// 	vis[node]=true;
-	// 	for(int nbr : graph.get(node)){
-	// 		if(!vis[node]) {
-	// 			boolean isCyclic=dfs(graph,nbr,node,vis);
+	// public static boolean dfs(ArrayList<ArrayList<Integer>>graph, int src,int parent, boolean[]visited){
+	// 	visited[src]=true;
+	// 	for(int nbr : graph.get(src)){
+	// 		if(!visited[src]) {
+	// 			boolean isCyclic=dfs(graph,nbr,src,visited);
 	// 			if(isCyclic) return true;
 	// 		}else if(parent!=nbr) return true;
 	// 	}
 	// 	return false;
 	// }
-	public static boolean bfs(ArrayList<ArrayList<Integer>>graph, int s, boolean[]vis){
+	public static boolean bfs(ArrayList<ArrayList<Integer>>graph, int s, boolean[]visited){
 		Queue<Integer>q=new LinkedList<>();
 		q.add(s);
 		while(q.size()>0){
 			// remove from q
 			int curr=q.remove();
-			// check if node is allready visited or not
-			if(vis[curr]) return true;
-			// mark curr not visited
-			vis[curr]=true;
+			// check if src is allready visitedited or not
+			if(visited[curr]) return true;
+			// mark curr not visitedited
+			visited[curr]=true;
 			// traverse all the neighbouring element of arraylist present in graph
 			for(int nbr : graph.get(curr)){
-				if(!vis[nbr]) q.add(nbr);
+				if(!visited[nbr]) q.add(nbr);
 			}
 		}
 		return false;
 	}
     public static boolean isCycle(int V, ArrayList<ArrayList<Integer>> graph) {
        // Your code here
-		boolean vis[]=new boolean[V];
+		boolean visited[]=new boolean[V];
 
 		for(int i=0;i<V;i++){
-			if(!vis[i] && bfs(graph,i,vis)) return true;
+			if(!visited[i] && bfs(graph,i,visited)) return true;
 		}
 		return false;
     }
