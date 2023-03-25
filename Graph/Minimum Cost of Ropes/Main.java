@@ -7,7 +7,7 @@ class Solution
     long minCost(long arr[], int n) 
     {
         PriorityQueue<Long>minpq=new PriorityQueue<>();
-		// PriorityQueue<Long>maxpq=new PriorityQueue<>(Collections.reverseOrder);
+		// PriorityQueue<Long>maxpq=new PriorityQueue<>(Collections.reverseOrder());
 		long sum=0;
 		for(int i=0;i<n;i++){
 			minpq.add(arr[i]);
