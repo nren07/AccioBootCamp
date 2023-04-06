@@ -90,7 +90,19 @@ class Solution
     //     return ans;
     // }
     
-    
+    static ArrayList<Integer> bfs(ArrayList<ArrayList<Integer>> adj,ArrayList<Integer>list,int []indegree){
+        while(q.size()!=0){
+        //  remove from queue
+            int temp=q.remove();
+            //  add to ans list
+            list.add(temp);
+            //  explore nbr and reduce degree by one and if it is equal to zero then add in queue
+            for(int nbr : adj.get(temp)){
+                
+                if(--indegree[nbr]==0) q.add(nbr);
+            }
+        }
+    }
      static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) {
          
          Queue<Integer>q=new LinkedList<>();
@@ -111,18 +123,8 @@ class Solution
              if(indegree[i]==0) q.add(i);
          }
         //   start bfs itration 
-        
-         while(q.size()!=0){
-            //  remove from queue
-             int temp=q.remove();
-            //  add to ans list
-             list.add(temp);
-            //  explore nbr and reduce degree by one and if it is equal to zero then add in queue
-             for(int nbr : adj.get(temp)){
-                 
-                 if(--indegree[nbr]==0) q.add(nbr);
-             }
-         }
+        bfs(adj,list,indegree);
+         
         //  store ans from list
          int idx=0;
          for(int e : list){
